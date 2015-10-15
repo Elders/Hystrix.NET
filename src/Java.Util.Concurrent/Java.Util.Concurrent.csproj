@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{928064F4-1233-44FD-8F8E-DC3BB4AF536E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Java.Util.Concurrent</RootNamespace>
+    <AssemblyName>Java.Util.Concurrent</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\CodeQuality\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractBlockingQueue.cs" />
+    <Compile Include="AbstractCollection.cs" />
+    <Compile Include="AbstractEnumerator.cs" />
+    <Compile Include="AbstractExecutorService.cs" />
+    <Compile Include="AbstractQueue.cs" />
+    <Compile Include="ArrayBlockingQueue.cs" />
+    <Compile Include="ArrayQueue.cs" />
+    <Compile Include="Atomic\AtomicBoolean.cs" />
+    <Compile Include="Atomic\AtomicInteger.cs" />
+    <Compile Include="Atomic\AtomicIntegerArray.cs" />
+    <Compile Include="Atomic\AtomicLong.cs" />
+    <Compile Include="Atomic\AtomicReference.cs" />
+    <Compile Include="Atomic\AtomicReferenceArray.cs" />
+    <Compile Include="BlockingQueueWrapper.cs" />
+    <Compile Include="Callable.cs" />
+    <Compile Include="CancellationException.cs" />
+    <Compile Include="ComparableComparer.cs" />
+    <Compile Include="ComparisonComparer.cs" />
+    <Compile Include="ContextCopyingRunnable.cs" />
+    <Compile Include="DelayQueue.cs" />
+    <Compile Include="EnumerableToArrayBuffer.cs" />
+    <Compile Include="ExecutionException.cs" />
+    <Compile Include="ExecutorCompletionService.cs" />
+    <Compile Include="Executors.cs" />
+    <Compile Include="FutureTask.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\FIFOWaitQueue.cs" />
+    <Compile Include="Helpers\IQueuedSync.cs" />
+    <Compile Include="Helpers\IWaitQueue.cs" />
+    <Compile Include="Helpers\SerializationUtilities.cs" />
+    <Compile Include="Helpers\WaitNode.cs" />
+    <Compile Include="Helpers\WaitTime.cs" />
+    <Compile Include="IBlockingQueue.cs" />
+    <Compile Include="ICallable.cs" />
+    <Compile Include="ICancellable.cs" />
+    <Compile Include="ICompletionService.cs" />
+    <Compile Include="IContextCarrier.cs" />
+    <Compile Include="IContextCarrierFactory.cs" />
+    <Compile Include="IContextCopyingTask.cs" />
+    <Compile Include="IDelayed.cs" />
+    <Compile Include="IExecutor.cs" />
+    <Compile Include="IExecutorService.cs" />
+    <Compile Include="IFuture.cs" />
+    <Compile Include="IQueue.cs" />
+    <Compile Include="IRecommendParallelism.cs" />
+    <Compile Include="IRejectedExecutionHandler.cs" />
+    <Compile Include="IRunnable.cs" />
+    <Compile Include="IRunnableFuture.cs" />
+    <Compile Include="IScheduledExecutorService.cs" />
+    <Compile Include="IScheduledFuture.cs" />
+    <Compile Include="IThreadFactory.cs" />
+    <Compile Include="LinkedBlockingQueue.cs" />
+    <Compile Include="Locks\ConditionVariable.cs" />
+    <Compile Include="Locks\FIFOConditionVariable.cs" />
+    <Compile Include="Locks\ICondition.cs" />
+    <Compile Include="Locks\ILock.cs" />
+    <Compile Include="Locks\ReentrantLock.cs" />
+    <Compile Include="PriorityQueue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueBrokenException.cs" />
+    <Compile Include="RejectedExecutionException.cs" />
+    <Compile Include="Runnable.cs" />
+    <Compile Include="ScheduledThreadPoolExecutor.cs" />
+    <Compile Include="SynchronousQueue.cs" />
+    <Compile Include="SystemExtensions.cs" />
+    <Compile Include="ThreadPoolExecutor.cs" />
+    <Compile Include="ToArrayEnumerator.cs" />
+    <Compile Include="TransformingBlockingQueue.cs" />
+    <Compile Include="Void.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
