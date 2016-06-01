@@ -1,10 +1,11 @@
-﻿namespace Netflix.Hystrix
-{
-    using System;
-    using System.Threading;
-    using Netflix.Hystrix.CircuitBreaker;
-    using Netflix.Hystrix.ThreadPool;
+﻿using System;
+using System.Threading;
+using Netflix.Hystrix.CircuitBreaker;
+using Netflix.Hystrix.Strategy;
+using Netflix.Hystrix.ThreadPool;
 
+namespace Netflix.Hystrix
+{
     public static class Hystrix
     {
         public static void Reset()
@@ -18,6 +19,10 @@
             HystrixCommandMetrics.Reset();
             //HystrixCollapser.Reset();
             HystrixCircuitBreakerFactory.Reset();
+            HystrixPlugins.Reset();
+
+            //HystrixPropertiesFactory.reset();
+            //currentCommand.set(new LinkedList<HystrixCommandKey>());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace Hystrix.Test.Strategy.Metrics
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using Java.Util.Concurrent.Atomic;
@@ -63,6 +64,8 @@
             {
                 return new HystrixDelegateMetricsPublisherThreadPool(() => this.threadCounter.IncrementAndGet());
             }
+
+            public void Dispose() { }
         }
     }
 }

@@ -122,6 +122,24 @@
             }
         }
 
+        public static void Reset()
+        {
+            //Instance.eventNotifier.Value?.Dispose();
+            Instance.eventNotifier.GetAndSet(null);
+
+            //Instance.concurrencyStrategy.Value?.Dispose();
+            Instance.concurrencyStrategy.GetAndSet(null);
+
+            Instance.metricsPublisher.Value?.Dispose();
+            Instance.metricsPublisher.GetAndSet(null);
+
+            //Instance.propertyStrategy.Value?.Dispose();
+            Instance.propertyStrategy.GetAndSet(null);
+
+            //Instance.commandExecutionHook.Value?.Dispose();
+            Instance.commandExecutionHook.GetAndSet(null);
+        }
+
         private static T GetPluginImplementationViaConfiguration<T>()
         {
             return (T)GetPluginImplementationViaConfiguration(typeof(T));
@@ -143,7 +161,7 @@
                 throw new Exception(String.Format("{0} implementation class not found: {1}", pluginType, implementationTypeName), e);
             }
 
-            if (!implementationType.IsSubclassOf(pluginType) && !implementationType.GetInterfaces().Contains(pluginType))
+            if (!pluginType.IsAssignableFrom(implementationType))
             {
                 throw new Exception(String.Format("{0} implementation is not an instance of {0}: {1}", pluginTypeName, implementationTypeName));
             }

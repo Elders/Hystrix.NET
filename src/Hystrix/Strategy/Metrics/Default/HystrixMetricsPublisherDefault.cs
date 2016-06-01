@@ -1,5 +1,6 @@
 ﻿namespace Netflix.Hystrix.Strategy.Metrics
 {
+    using System;
     using Netflix.Hystrix.CircuitBreaker;
     using Netflix.Hystrix.ThreadPool;
 
@@ -20,6 +21,11 @@
         public virtual IHystrixMetricsPublisherThreadPool GetMetricsPublisherForThreadPool(HystrixThreadPoolKey threadPoolKey, HystrixThreadPoolMetrics metrics, IHystrixThreadPoolProperties properties)
         {
             return new HystrixMetricsPublisherThreadPoolDefault(threadPoolKey, metrics, properties);
+        }
+
+        public void Dispose()
+        {
+            // do nothing by default
         }
     }
 }

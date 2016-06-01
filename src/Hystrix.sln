@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix", "Hystrix\Hystrix.csproj", "{C001192A-C671-4263-A364-F5BCFE20452B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Test", "Hystrix.Test\Hystrix.Test.csproj", "{F2763065-50AF-40BC-AC21-EA7F76839229}"
@@ -16,6 +18,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{C16B8669-93F8-41E2-B5F7-86FA707072D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{3F913BBD-A190-4FCC-8F67-180301B57365}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{DAC1290A-55F9-4A6C-BCD7-3AF547E8C26A}"
+	ProjectSection(SolutionItems) = preProject
+		Hystrix\Hystrix.nuspec = Hystrix\Hystrix.nuspec
+		Hystrix\RELEASE_NOTES.md = Hystrix\RELEASE_NOTES.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Contrib.ServoPublisher", "Hystrix.Contrib.ServoPublisher\Hystrix.Contrib.ServoPublisher.csproj", "{6FCB2846-5F57-462F-89C5-2E1FDBF4ECCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +57,10 @@ Global
 		{2F667CAC-70E8-40C9-A4A6-613B86F05190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F667CAC-70E8-40C9-A4A6-613B86F05190}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F667CAC-70E8-40C9-A4A6-613B86F05190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FCB2846-5F57-462F-89C5-2E1FDBF4ECCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FCB2846-5F57-462F-89C5-2E1FDBF4ECCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FCB2846-5F57-462F-89C5-2E1FDBF4ECCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FCB2846-5F57-462F-89C5-2E1FDBF4ECCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

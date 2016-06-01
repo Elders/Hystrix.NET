@@ -314,7 +314,7 @@
          * @throws HystrixBadRequestException
          *             if invalid arguments or state were used representing a user failure, not a system failure
          */
-        public R Execute() 
+        public R Execute()
         {
             try
             {

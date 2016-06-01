@@ -20,7 +20,7 @@
         {
             return instance.GetPublisherForCommand(commandKey, commandOwner, metrics, circuitBreaker, properties);
         }
-        
+
         private readonly IHystrixMetricsPublisher strategy;
 
         internal HystrixMetricsPublisherFactory()

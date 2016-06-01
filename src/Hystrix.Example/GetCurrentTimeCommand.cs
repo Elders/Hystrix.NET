@@ -12,7 +12,11 @@
         public GetCurrentTimeCommand()
             : base(HystrixCommandSetter.WithGroupKey("TimeGroup")
                 .AndCommandKey("GetCurrentTime")
-                .AndCommandPropertiesDefaults(new HystrixCommandPropertiesSetter().WithExecutionIsolationThreadTimeout(TimeSpan.FromSeconds(1.0)).WithExecutionIsolationThreadInterruptOnTimeout(true)))
+                .AndCommandPropertiesDefaults(
+                    new HystrixCommandPropertiesSetter()
+                    .WithExecutionIsolationThreadTimeout(TimeSpan.FromSeconds(1.0))
+                    .WithExecutionIsolationStrategy(ExecutionIsolationStrategy.Semaphore)
+                    .WithExecutionIsolationThreadInterruptOnTimeout(true)))
         {
         }
 

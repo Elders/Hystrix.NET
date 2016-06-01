@@ -1,9 +1,10 @@
-﻿namespace Netflix.Hystrix.Strategy.Metrics
-{
-    using Netflix.Hystrix.CircuitBreaker;
-    using Netflix.Hystrix.ThreadPool;
+﻿using System;
+using Netflix.Hystrix.CircuitBreaker;
+using Netflix.Hystrix.ThreadPool;
 
-    public interface IHystrixMetricsPublisher
+namespace Netflix.Hystrix.Strategy.Metrics
+{
+    public interface IHystrixMetricsPublisher : IDisposable
     {
         IHystrixMetricsPublisherCommand GetMetricsPublisherForCommand(HystrixCommandKey commandKey, HystrixCommandGroupKey commandGroupKey, HystrixCommandMetrics metrics, IHystrixCircuitBreaker circuitBreaker, IHystrixCommandProperties properties);
         IHystrixMetricsPublisherThreadPool GetMetricsPublisherForThreadPool(HystrixThreadPoolKey threadPoolKey, HystrixThreadPoolMetrics metrics, IHystrixThreadPoolProperties properties);
