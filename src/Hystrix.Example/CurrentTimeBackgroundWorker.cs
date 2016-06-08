@@ -4,13 +4,12 @@
     using System.Globalization;
     using System.Threading;
     using Hystrix.NET.MetricsEventStream;
-    using slf4net;
 
     internal class CurrentTimeBackgroundWorker : StoppableBackgroundWorker
     {
         private const string ThreadName = "Hystrix-Example-Worker-{0}";
 
-        private static readonly ILogger Logger = LoggerFactory.GetLogger(typeof(CurrentTimeBackgroundWorker));
+        private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(CurrentTimeBackgroundWorker));
 
         private static int nextId = 1;
 
@@ -31,7 +30,7 @@
 
                 GetCurrentTimeCommand command = new GetCurrentTimeCommand();
                 long currentTime = command.Execute();
-                Logger.Trace(string.Format(CultureInfo.InvariantCulture, "The current time is {0}.", currentTime));
+                Logger.Debug(string.Format(CultureInfo.InvariantCulture, "The current time is {0}.", currentTime));
             }
         }
     }

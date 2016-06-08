@@ -36,51 +36,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elders.Multithreading.Scheduler, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Multithreading.Scheduler.1.0.1\lib\net40-full\Elders.Multithreading.Scheduler.dll</HintPath>
+    <Reference Include="Elders.Multithreading.Scheduler, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Multithreading.Scheduler.1.1.0\lib\net45-full\Elders.Multithreading.Scheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Elders.Servo, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Servo.0.1.0-beta0004\lib\net45-full\Elders.Servo.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Elders.Servo.Atlas, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Servo.Atlas.0.1.0-beta0006\lib\net45-full\Elders.Servo.Atlas.dll</HintPath>
+    <Reference Include="Elders.Servo.Atlas, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Servo.Atlas.0.1.0-beta0007\lib\net45-full\Elders.Servo.Atlas.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Hystrix.NET.Contrib.ServoPublisher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hystrix.NET.Contrib.ServoPublisher.1.0.0-beta0001\lib\net45-full\Hystrix.NET.Contrib.ServoPublisher.dll</HintPath>
+      <HintPath>..\packages\Hystrix.NET.Contrib.ServoPublisher.1.0.0-beta0003\lib\net45-full\Hystrix.NET.Contrib.ServoPublisher.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Hystrix.NET.MetricsEventStream, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hystrix.NET.MetricsEventStream.1.0.0-beta0001\lib\net45-full\Hystrix.NET.MetricsEventStream.dll</HintPath>
+      <HintPath>..\packages\Hystrix.NET.MetricsEventStream.1.0.0-beta0003\lib\net45-full\Hystrix.NET.MetricsEventStream.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Java.Util.Concurrent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hystrix.1.0.0-alpha001\lib\net45-full\Java.Util.Concurrent.dll</HintPath>
+      <HintPath>..\packages\Hystrix.1.0.0-beta0003\lib\net45-full\Java.Util.Concurrent.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Netflix.Hystrix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hystrix.1.0.0-alpha001\lib\net45-full\Netflix.Hystrix.dll</HintPath>
+      <HintPath>..\packages\Hystrix.1.0.0-beta0003\lib\net45-full\Netflix.Hystrix.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="slf4net">
-      <HintPath>..\packages\slf4net.0.1.32.1\lib\net35\slf4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
