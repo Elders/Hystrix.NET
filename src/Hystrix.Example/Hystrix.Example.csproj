@@ -82,9 +82,6 @@
     <Reference Include="slf4net">
       <HintPath>..\packages\slf4net.0.1.32.1\lib\net35\slf4net.dll</HintPath>
     </Reference>
-    <Reference Include="slf4net.NLog">
-      <HintPath>..\packages\slf4net.NLog.0.1.32.1\lib\net35\slf4net.NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
