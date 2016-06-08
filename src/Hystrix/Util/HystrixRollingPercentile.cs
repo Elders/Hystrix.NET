@@ -18,7 +18,6 @@ namespace Netflix.Hystrix.Util
     using System.Diagnostics;
     using System.Threading;
     using Java.Util.Concurrent.Atomic;
-    using slf4net;
 
     /// <summary>
     /// <para>
@@ -43,7 +42,7 @@ namespace Netflix.Hystrix.Util
         /// <summary>
         /// The logger instance to log the events of this object.
         /// </summary>
-        private static readonly ILogger Logger = LoggerFactory.GetLogger(typeof(HystrixRollingPercentile));
+        private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(HystrixRollingPercentile));
 
         /// <summary>
         /// The object used to synchronize the <see cref="GetCurrentBucket"/> method.

@@ -16,11 +16,10 @@
     using Netflix.Hystrix.Strategy.Properties;
     using Netflix.Hystrix.ThreadPool;
     using Netflix.Hystrix.Util;
-    using slf4net;
 
     public abstract class HystrixCommand
     {
-        protected static readonly ILogger logger = LoggerFactory.GetLogger(typeof(HystrixCommand));
+        protected static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixCommand));
 
         internal protected readonly IHystrixCircuitBreaker circuitBreaker;
         internal protected readonly IHystrixThreadPool threadPool;

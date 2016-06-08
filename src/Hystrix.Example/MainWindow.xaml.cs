@@ -15,7 +15,7 @@ namespace Hystrix.Example
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
-    using Hystrix.MetricsEventStream;
+    using Hystrix.NET.MetricsEventStream;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -50,7 +50,7 @@ namespace Hystrix.Example
 
         private void Log(string level, string message)
         {
-            Dispatcher.BeginInvoke(new Action(delegate()
+            Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 string log = LogTextBox.Text;
                 log += level.PadRight(5) + " | " + message + Environment.NewLine;
@@ -78,7 +78,7 @@ namespace Hystrix.Example
 
         private void MetricsServer_Stopped(object sender, EventArgs e)
         {
-            Dispatcher.BeginInvoke(new Action(delegate()
+            Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 this.StartMetricsServerButton.IsEnabled = true;
             }));

@@ -6,14 +6,13 @@
     using Java.Util.Concurrent;
     using Netflix.Hystrix.Strategy;
     using Netflix.Hystrix.Strategy.Concurrency;
-    using slf4net;
 
     /// <summary>
     /// Log of <see cref="HystrixCommand"/> executions and events during the current request.
     /// </summary>
     public class HystrixRequestLog
     {
-        private static readonly ILogger logger = LoggerFactory.GetLogger(typeof(HystrixRequestLog));
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixRequestLog));
 
         /**
          * RequestLog: Reduce Chance of Memory Leak

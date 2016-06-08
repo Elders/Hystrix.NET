@@ -7,11 +7,11 @@
     using Netflix.Hystrix.Strategy;
     using Netflix.Hystrix.Strategy.EventNotifier;
     using Netflix.Hystrix.Util;
-    using slf4net;
 
     public class HystrixCommandMetrics
     {
-        private static readonly ILogger logger = LoggerFactory.GetLogger(typeof(HystrixCommandMetrics));
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixCommandMetrics));
+
         private static readonly ConcurrentDictionary<string, HystrixCommandMetrics> metrics = new ConcurrentDictionary<string, HystrixCommandMetrics>();
 
         public static HystrixCommandMetrics GetInstance(HystrixCommandKey key, HystrixCommandGroupKey commandGroup, IHystrixCommandProperties properties)

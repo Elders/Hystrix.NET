@@ -16,7 +16,6 @@ namespace Netflix.Hystrix.Util
 {
     using System;
     using System.Threading;
-    using slf4net;
 
     /// <summary>
     /// Provides timers to repeatedly call <see cref="ITimerListener"/> implementations.
@@ -31,7 +30,7 @@ namespace Netflix.Hystrix.Util
         /// <summary>
         /// The logger instance for this type.
         /// </summary>
-        private static readonly ILogger Logger = LoggerFactory.GetLogger(typeof(HystrixTimer));
+        private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(HystrixTimer));
 
         /// <summary>
         /// Prevents a default instance of the <see cref="HystrixTimer"/> class from being created.

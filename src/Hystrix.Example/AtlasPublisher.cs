@@ -1,4 +1,4 @@
-﻿using Hystrix.Contrib.ServoPublisher;
+﻿using Hystrix.NET.Contrib.ServoPublisher;
 using Netflix.Hystrix;
 using Netflix.Hystrix.CircuitBreaker;
 using Netflix.Hystrix.Strategy.Metrics;

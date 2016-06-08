@@ -3,7 +3,7 @@
     using System;
     using System.Globalization;
     using System.Threading;
-    using Hystrix.MetricsEventStream;
+    using Hystrix.NET.MetricsEventStream;
     using slf4net;
 
     internal class CurrentTimeBackgroundWorker : StoppableBackgroundWorker

@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Concurrent;
     using System.Threading;
-    using slf4net;
 
     public class HystrixRequestContext : IDisposable
     {
-        private static readonly ILogger logger = LoggerFactory.GetLogger(typeof(HystrixRequestContext));
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixRequestContext));
 
         private static readonly ThreadLocal<HystrixRequestContext> requestContexts = new ThreadLocal<HystrixRequestContext>();
 
