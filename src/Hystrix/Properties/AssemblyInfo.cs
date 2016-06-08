@@ -9,10 +9,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyrightAttribute("Copyright ©  2016")]
 [assembly: AssemblyVersionAttribute("1.0.0.0")]
 [assembly: AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: AssemblyInformationalVersionAttribute("1.0.0-beta.2+2.Branch.release-1.0.0.Sha.72800eb82ddf7758661aa6b5d52b936b6ced5871")]
+[assembly: AssemblyInformationalVersionAttribute("1.0.0-beta.2+2.Branch.release-1.0.0.Sha.15c0e3a904a4fd0a8d15cb0c9444d6311ad17c6f")]
 namespace System {
     internal static class AssemblyVersionInformation {
         internal const string Version = "1.0.0.0";
-        internal const string InformationalVersion = "1.0.0-beta.2+2.Branch.release-1.0.0.Sha.72800eb82ddf7758661aa6b5d52b936b6ced5871";
+        internal const string InformationalVersion = "1.0.0-beta.2+2.Branch.release-1.0.0.Sha.15c0e3a904a4fd0a8d15cb0c9444d6311ad17c6f";
     }
 }
