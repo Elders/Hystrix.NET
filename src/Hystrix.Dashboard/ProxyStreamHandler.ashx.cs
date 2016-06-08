@@ -14,13 +14,13 @@
 
 namespace Hystrix.Dashboard
 {
+    using Logging;
     using System;
     using System.Globalization;
     using System.IO;
     using System.Net;
     using System.Text;
     using System.Web;
-    using slf4net;
 
     /// <summary>
     /// An HTTP handler for proxy streaming. This is necessary because some browsers don't support cross-site streaming.
@@ -32,7 +32,7 @@ namespace Hystrix.Dashboard
         /// <summary>
         /// A logger instance for producing log messages.
         /// </summary>
-        private static readonly ILogger Logger = LoggerFactory.GetLogger(typeof(ProxyStreamHandler));
+        private static readonly ILog Logger = LogProvider.GetLogger(typeof(ProxyStreamHandler));
 
         /// <summary>
         /// Gets a value indicating whether to reuse the <see cref="ProxyStreamHandler"/> instances or not.
@@ -65,7 +65,7 @@ namespace Hystrix.Dashboard
             }
 
             Uri sourceUri = GetSourceUri(context.Request);
-            Logger.Info(CultureInfo.InvariantCulture, "Opening connection to '{0}'.", sourceUri);
+            Logger.Info(string.Format(CultureInfo.InvariantCulture, "Opening connection to '{0}'.", sourceUri));
 
             try
             {
@@ -84,7 +84,7 @@ namespace Hystrix.Dashboard
             }
             catch (Exception e)
             {
-                Logger.Error(e, CultureInfo.InvariantCulture, "Error occurred during streaming from '{0}'.", sourceUri);
+                Logger.ErrorException(string.Format(CultureInfo.InvariantCulture, "Error occurred during streaming from '{0}'.", sourceUri), e);
                 throw;
             }
         }

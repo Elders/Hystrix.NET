@@ -7,10 +7,10 @@
     using Netflix.Hystrix.Strategy;
     using Netflix.Hystrix.Strategy.EventNotifier;
     using Netflix.Hystrix.Util;
-
+    using Logging;
     public class HystrixCommandMetrics
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixCommandMetrics));
+        private static readonly ILog logger = LogProvider.GetLogger(typeof(HystrixCommandMetrics));
 
         private static readonly ConcurrentDictionary<string, HystrixCommandMetrics> metrics = new ConcurrentDictionary<string, HystrixCommandMetrics>();
 

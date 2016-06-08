@@ -18,7 +18,7 @@ namespace Netflix.Hystrix.Util
     using System.Diagnostics;
     using System.Threading;
     using Java.Util.Concurrent.Atomic;
-
+    using Logging;
     /// <summary>
     /// <para>
     /// Add values to a rolling window and retrieve percentile calculations such as median, 90th, 99th, etc.
@@ -42,7 +42,7 @@ namespace Netflix.Hystrix.Util
         /// <summary>
         /// The logger instance to log the events of this object.
         /// </summary>
-        private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(HystrixRollingPercentile));
+        private static readonly ILog Logger = LogProvider.GetLogger(typeof(HystrixRollingPercentile));
 
         /// <summary>
         /// The object used to synchronize the <see cref="GetCurrentBucket"/> method.
@@ -181,7 +181,7 @@ namespace Netflix.Hystrix.Util
                 }
                 catch (Exception e)
                 {
-                    Logger.Error("Failed to add value: " + v, e);
+                    Logger.ErrorException("Failed to add value: " + v, e);
                 }
             }
         }

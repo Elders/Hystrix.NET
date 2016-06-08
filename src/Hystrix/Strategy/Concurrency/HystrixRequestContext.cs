@@ -1,12 +1,13 @@
 ﻿namespace Netflix.Hystrix.Strategy.Concurrency
 {
+    using Logging;
     using System;
     using System.Collections.Concurrent;
     using System.Threading;
 
     public class HystrixRequestContext : IDisposable
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixRequestContext));
+        private static readonly ILog logger = LogProvider.GetLogger(typeof(HystrixRequestContext));
 
         private static readonly ThreadLocal<HystrixRequestContext> requestContexts = new ThreadLocal<HystrixRequestContext>();
 
@@ -66,7 +67,7 @@
                     }
                     catch (Exception e)
                     {
-                        logger.Error("Error in shutdown, will continue with shutdown of other variables", e);
+                        logger.ErrorException("Error in shutdown, will continue with shutdown of other variables", e);
                     }
                 }
                 State = null;

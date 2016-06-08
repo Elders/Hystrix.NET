@@ -6,13 +6,13 @@
     using Java.Util.Concurrent;
     using Netflix.Hystrix.Strategy;
     using Netflix.Hystrix.Strategy.Concurrency;
-
+    using Logging;
     /// <summary>
     /// Log of <see cref="HystrixCommand"/> executions and events during the current request.
     /// </summary>
     public class HystrixRequestLog
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixRequestLog));
+        private static readonly ILog logger = LogProvider.GetLogger(typeof(HystrixRequestLog));
 
         /**
          * RequestLog: Reduce Chance of Memory Leak
@@ -189,7 +189,7 @@
             }
             catch (System.Exception e)
             {
-                logger.Error("Failed to create HystrixRequestLog response header string.", e);
+                logger.ErrorException("Failed to create HystrixRequestLog response header string.", e);
                 // don't let this cause the entire app to fail so just return "Unknown"
                 return "Unknown";
             }

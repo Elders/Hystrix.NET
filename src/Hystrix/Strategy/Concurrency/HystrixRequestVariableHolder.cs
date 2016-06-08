@@ -1,10 +1,11 @@
 ﻿namespace Netflix.Hystrix.Strategy.Concurrency
 {
+    using Logging;
     using System.Collections.Concurrent;
 
     public class HystrixRequestVariableHolder
     {
-        protected static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixRequestVariableHolder));
+        internal static readonly ILog logger = LogProvider.GetLogger(typeof(HystrixRequestVariableHolder));
 
         private static readonly ConcurrentDictionary<HystrixRequestVariableCacheKey, IHystrixRequestVariable> requestVariableInstance = new ConcurrentDictionary<HystrixRequestVariableCacheKey, IHystrixRequestVariable>();
 

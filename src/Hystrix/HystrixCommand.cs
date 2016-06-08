@@ -16,10 +16,10 @@
     using Netflix.Hystrix.Strategy.Properties;
     using Netflix.Hystrix.ThreadPool;
     using Netflix.Hystrix.Util;
-
+    using Logging;
     public abstract class HystrixCommand
     {
-        protected static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HystrixCommand));
+        internal static readonly ILog logger = LogProvider.GetLogger(typeof(HystrixCommand));
 
         internal protected readonly IHystrixCircuitBreaker circuitBreaker;
         internal protected readonly IHystrixThreadPool threadPool;
@@ -399,7 +399,7 @@
                     }
                     // we don't know what kind of exception this is so create a generic message and throw a new HystrixRuntimeException
                     String message = GetLogMessagePrefix() + " failed while executing.";
-                    logger.Debug(message, e); // debug only since we're throwing the exception and someone higher will do something with it
+                    logger.DebugException(message, e); // debug only since we're throwing the exception and someone higher will do something with it
                     throw new HystrixRuntimeException(FailureType.CommandException, GetType(), message, e, null);
                 }
             }
@@ -632,7 +632,7 @@
                          * fireAndForget or when the user kicks of many
                          * calls asynchronously to come back to them later)
                          */
-                        if (logger.IsDebugEnabled)
+                        if (logger.IsDebugEnabled())
                         {
                             logger.Debug("Callable is being skipped since the user-thread has already timed-out this request after " + timeQueued + "ms.");
                         }
@@ -675,7 +675,7 @@
                     }
                     catch (System.Exception e)
                     {
-                        logger.Warn("ExecutionHook.onThreadComplete threw an exception that will be ignored.", e);
+                        logger.WarnException("ExecutionHook.onThreadComplete threw an exception that will be ignored.", e);
                     }
                 }
             })));
@@ -757,13 +757,13 @@
                     }
                     else
                     {
-                        logger.Warn("ExecutionHook.endRunFailure returned an exception that was not an instance of HystrixBadRequestException so will be ignored.", decorated);
+                        logger.WarnException("ExecutionHook.endRunFailure returned an exception that was not an instance of HystrixBadRequestException so will be ignored.", decorated);
                     }
                     throw e;
                 }
                 catch (System.Exception hookException)
                 {
-                    logger.Warn("Error calling ExecutionHook.endRunFailure", hookException);
+                    logger.WarnException("Error calling ExecutionHook.endRunFailure", hookException);
                 }
 
                 /*
@@ -779,7 +779,7 @@
                 }
                 catch (System.Exception hookException)
                 {
-                    logger.Warn("Error calling ExecutionHook.endRunFailure", hookException);
+                    logger.WarnException("Error calling ExecutionHook.endRunFailure", hookException);
                 }
 
                 if (isCommandTimedOut.Value)
@@ -788,12 +788,12 @@
                     // this means we have already timed out then we don't count this error stat and we just return
                     // as this means the user-thread has already returned, we've already done fallback logic
                     // and we've already counted the timeout stat
-                    logger.Error("Error executing HystrixCommand.run() [TimedOut]. Proceeding to fallback logic ...", e);
+                    logger.ErrorException("Error executing HystrixCommand.run() [TimedOut]. Proceeding to fallback logic ...", e);
                     return default(R);
                 }
                 else
                 {
-                    logger.Error("Error executing HystrixCommand.run(). Proceeding to fallback logic ...", e);
+                    logger.ErrorException("Error executing HystrixCommand.run(). Proceeding to fallback logic ...", e);
                 }
                 // report failure
                 metrics.MarkFailure(ActualTime.CurrentTimeInMillis - startTime);
@@ -975,7 +975,7 @@
                     }
                     catch (NotSupportedException fe)
                     {
-                        logger.Debug("No fallback for HystrixCommand. ", fe); // debug only since we're throwing the exception and someone higher will do something with it
+                        logger.DebugException("No fallback for HystrixCommand. ", fe); // debug only since we're throwing the exception and someone higher will do something with it
                         // record the executionResult
                         this.executionResult = this.executionResult.AddEvents(eventType);
 
@@ -986,14 +986,14 @@
                         }
                         catch (System.Exception hookException)
                         {
-                            logger.Warn("Error calling IExecutionHook.OnError", hookException);
+                            logger.WarnException("Error calling IExecutionHook.OnError", hookException);
                         }
 
                         throw new HystrixRuntimeException(failureType, GetType(), GetLogMessagePrefix() + " " + message + " and no fallback available.", e, fe);
                     }
                     catch (System.Exception fe)
                     {
-                        logger.Error("Error retrieving fallback for HystrixCommand. ", fe);
+                        logger.ErrorException("Error retrieving fallback for HystrixCommand. ", fe);
                         this.metrics.MarkFallbackFailure();
                         // record the executionResult
                         this.executionResult = this.executionResult.AddEvents(eventType, HystrixEventType.FallbackFailure);
@@ -1005,7 +1005,7 @@
                         }
                         catch (System.Exception hookException)
                         {
-                            logger.Warn("Error calling ExecutionHook.onError", hookException);
+                            logger.WarnException("Error calling ExecutionHook.onError", hookException);
                         }
 
                         throw new HystrixRuntimeException(failureType, GetType(), GetLogMessagePrefix() + " " + message + " and failed retrieving fallback.", e, fe);
@@ -1015,7 +1015,7 @@
                 {
                     /* fallback is disabled so throw HystrixRuntimeException */
 
-                    logger.Debug("Fallback disabled for HystrixCommand so will throw HystrixRuntimeException. ", e); // debug only since we're throwing the exception and someone higher will do something with it
+                    logger.DebugException("Fallback disabled for HystrixCommand so will throw HystrixRuntimeException. ", e); // debug only since we're throwing the exception and someone higher will do something with it
                     // record the executionResult
                     this.executionResult = this.executionResult.AddEvents(eventType);
 
@@ -1026,7 +1026,7 @@
                     }
                     catch (System.Exception hookException)
                     {
-                        logger.Warn("Error calling ExecutionHook.onError", hookException);
+                        logger.WarnException("Error calling ExecutionHook.onError", hookException);
                     }
                     throw new HystrixRuntimeException(failureType, GetType(), GetLogMessagePrefix() + " " + message + " and fallback disabled.", e, null);
                 }
@@ -1173,7 +1173,7 @@
                     catch (System.Exception e)
                     {
                         // unknown exception
-                        logger.Error(this.command.GetLogMessagePrefix() + ": Unexpected exception while submitting to queue.", e);
+                        logger.ErrorException(this.command.GetLogMessagePrefix() + ": Unexpected exception while submitting to queue.", e);
                         try
                         {
                             actualFuture = this.command.AsFuture(this.command.GetFallbackOrThrowException(HystrixEventType.ThreadPoolRejected, FailureType.RejectedThreadExecution, "had unexpected exception while attempting to queue for execution.", e));
@@ -1208,7 +1208,7 @@
                     catch (System.Exception e)
                     {
                         isInterrupted = true;
-                        logger.Error(this.command.GetLogMessagePrefix() + ": Unexpected interruption while waiting on other thread submitting to queue.", e);
+                        logger.ErrorException(this.command.GetLogMessagePrefix() + ": Unexpected interruption while waiting on other thread submitting to queue.", e);
                         actualFuture = this.command.AsFuture(this.command.GetFallbackOrThrowException(HystrixEventType.ThreadPoolRejected, FailureType.RejectedThreadExecution, "Unexpected interruption while waiting on other thread submitting to queue.", e));
                     }
                 }

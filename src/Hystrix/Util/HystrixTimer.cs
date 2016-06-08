@@ -14,6 +14,7 @@
 
 namespace Netflix.Hystrix.Util
 {
+    using Logging;
     using System;
     using System.Threading;
 
@@ -30,7 +31,7 @@ namespace Netflix.Hystrix.Util
         /// <summary>
         /// The logger instance for this type.
         /// </summary>
-        private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(HystrixTimer));
+        private static readonly ILog Logger = LogProvider.GetLogger(typeof(HystrixTimer));
 
         /// <summary>
         /// Prevents a default instance of the <see cref="HystrixTimer"/> class from being created.
@@ -56,7 +57,7 @@ namespace Netflix.Hystrix.Util
                     }
                     catch (Exception e)
                     {
-                        Logger.Error("Failed while ticking TimerListener", e);
+                        Logger.ErrorException("Failed while ticking TimerListener", e);
                     }
                 },
                 null,

@@ -1,3 +1,6 @@
+#### 1.0.0-beta0003 - 08.06.2016
+* Started using LibLog
+
 #### 1.0.0-beta0002 - 08.06.2016
 * Added Log4NetLogger
 * Removed slf4net
