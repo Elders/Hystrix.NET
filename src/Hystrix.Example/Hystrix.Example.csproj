@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="CurrentTimeBackgroundWorker.cs" />
     <Compile Include="GetCurrentTimeCommand.cs" />
+    <Compile Include="LogStartup.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -31,6 +31,7 @@ namespace Hystrix.Example
         public MainWindow()
         {
             InitializeComponent();
+            LogStartup.Boot();
 
             instance = this;
 
