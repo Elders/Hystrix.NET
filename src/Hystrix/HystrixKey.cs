@@ -90,7 +90,7 @@ namespace Netflix.Hystrix
         /// <returns>true if the specified object is equal to the current object; otherwise, false</returns>
         public override bool Equals(object obj)
         {
-            HystrixCommandKey other = obj as HystrixCommandKey;
+            HystrixKey other = obj as HystrixKey;
             return this.Equals(other);
         }
 
