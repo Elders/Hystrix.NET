@@ -13,7 +13,7 @@ namespace Hystrix.Example
 
         public AtlasPublisher()
         {
-            var atlasCfg = new AtlasConfig("http://docker-local.com");
+            var atlasCfg = new AtlasConfig("http://10.0.75.2", 7101);
             observer = new CommandMetricObserver(atlasCfg);
             observer.Run();
         }

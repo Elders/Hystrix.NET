@@ -48,12 +48,12 @@
       <HintPath>..\packages\Servo.Atlas.0.1.0-beta0007\lib\net45-full\Elders.Servo.Atlas.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hystrix.NET.Contrib.ServoPublisher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hystrix.NET.Contrib.ServoPublisher.1.0.0-beta0003\lib\net45-full\Hystrix.NET.Contrib.ServoPublisher.dll</HintPath>
+    <Reference Include="Hystrix.NET.Contrib.ServoPublisher, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hystrix.NET.Contrib.ServoPublisher.1.0.0-beta0004\lib\net45-full\Hystrix.NET.Contrib.ServoPublisher.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hystrix.NET.MetricsEventStream, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hystrix.NET.MetricsEventStream.1.0.0-beta0003\lib\net45-full\Hystrix.NET.MetricsEventStream.dll</HintPath>
+    <Reference Include="Hystrix.NET.MetricsEventStream, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hystrix.NET.MetricsEventStream.1.0.0-beta0005\lib\net45-full\Hystrix.NET.MetricsEventStream.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Java.Util.Concurrent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
