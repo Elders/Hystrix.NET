@@ -1,3 +1,6 @@
+#### 1.0.0-beta0004 - 25.07.2016
+* Fix HystrixKey Equals comparison
+
 #### 1.0.0-beta0003 - 08.06.2016
 * Started using LibLog
 
