@@ -90,7 +90,6 @@
     <Compile Include="ThreadPoolKeyForUnitTest.cs" />
     <Compile Include="UnitTestSetterFactory.cs" />
     <Compile Include="HystrixCommandTestImplementations\UnknownFailureTestCommandWithoutFallback.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\Metrics\HystrixMetricPublisherFactoryTest.cs" />
     <Compile Include="Strategy\Properties\HystrixPropertyTest.cs" />
     <Compile Include="CircuitBreakerTestImplementations\TestCircuitBreaker.cs" />
@@ -109,6 +108,9 @@
       <Project>{928064f4-1233-44fd-8f8e-dc3bb4af536e}</Project>
       <Name>Java.Util.Concurrent</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

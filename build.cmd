@@ -49,6 +49,7 @@ SET RELEASE_NOTES=RELEASE_NOTES.md
 SET SUMMARY="Hystrix.NET"
 SET DESCRIPTION="Hystrix.NET"
 
-%FAKE% %NYX% appName=Hystrix appReleaseNotes=%RELEASE_NOTES% appSummary=%SUMMARY% appDescription=%DESCRIPTION% nugetkey=%RELEASE_NUGETKEY% nugetPackageName=Hystrix
+%FAKE% %NYX% appName=Hystrix	          appReleaseNotes=%RELEASE_NOTES% appSummary=%SUMMARY% appDescription=%DESCRIPTION% nugetkey=%RELEASE_NUGETKEY% nugetPackageName=Hystrix
+%FAKE% %NYX% appName=Hystrix.Dashboard	appReleaseNotes=%RELEASE_NOTES% appSummary=%SUMMARY% appDescription=%DESCRIPTION% nugetkey=%RELEASE_NUGETKEY% nugetPackageName=Hystrix.Dashboard
 
 IF NOT [%1]==[] (%FAKE% %NYX% "target=Release" -st appReleaseNotes=%RELEASE_NOTES%)

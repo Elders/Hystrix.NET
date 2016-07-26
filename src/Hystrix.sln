@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{3F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{DAC1290A-55F9-4A6C-BCD7-3AF547E8C26A}"
 	ProjectSection(SolutionItems) = preProject
+		Hystrix.Dashboard\Hystrix.Dashboard.nuspec = Hystrix.Dashboard\Hystrix.Dashboard.nuspec
 		Hystrix\Hystrix.nuspec = Hystrix\Hystrix.nuspec
 		..\RELEASE_NOTES.md = ..\RELEASE_NOTES.md
 	EndProjectSection

@@ -1,3 +1,6 @@
+#### 1.0.0-beta0005 - 26.07.2016
+* Hystrix dashboard as OWIN middleware
+
 #### 1.0.0-beta0004 - 25.07.2016
 * Fix HystrixKey Equals comparison
 

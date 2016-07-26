@@ -91,7 +91,6 @@
     <Compile Include="ThreadPool\IHystrixThreadPool.cs" />
     <Compile Include="ThreadPool\HystrixThreadPoolKey.cs" />
     <Compile Include="CircuitBreaker\NoOpCircuitBreaker.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestCacheKey.cs" />
     <Compile Include="SemaphoreQueuedWrapperFuture.cs" />
     <Compile Include="Strategy\Concurrency\DelegateRequestVariableLifecycle.cs" />
