@@ -1,63 +1,35 @@
-﻿// Copyright 2013 Loránd Biró
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+﻿using Hystrix.Dashboard.Logging;
+using Microsoft.Owin;
+using System;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Text;
 
 namespace Hystrix.Dashboard
 {
-    using Logging;
-    using System;
-    using System.Globalization;
-    using System.IO;
-    using System.Net;
-    using System.Text;
-    using System.Web;
-
-    /// <summary>
-    /// An HTTP handler for proxy streaming. This is necessary because some browsers don't support cross-site streaming.
-    /// Continuously transfers the data from the source uri to the client.
-    /// The source must be specified in the 'origin' query string parameter.
-    /// </summary>
-    public class ProxyStreamHandler : IHttpHandler
+    [Obsolete("I see no reason why this class should exists. We could do this directly in the javascript...")]
+    public class HystrixProxyStream
     {
-        /// <summary>
-        /// A logger instance for producing log messages.
-        /// </summary>
-        private static readonly ILog Logger = LogProvider.GetLogger(typeof(ProxyStreamHandler));
-
-        /// <summary>
-        /// Gets a value indicating whether to reuse the <see cref="ProxyStreamHandler"/> instances or not.
-        /// </summary>
-        public bool IsReusable
-        {
-            get
-            {
-                return true;
-            }
-        }
+        private static readonly ILog Logger = LogProvider.GetLogger(typeof(HystrixProxyStream));
 
         /// <summary>
         /// Continuously transfers the data from the source uri to the client.
         /// The source must be specified in the 'origin' query string parameter.
         /// </summary>
         /// <param name="context">The client request.</param>
-        public void ProcessRequest(HttpContext context)
+        public void ProcessRequest(object owinContext)
         {
+            var context = owinContext as OwinContext;
+
+            if (context.Request.Path.HasValue == false || context.Request.Path.Value != "/proxy.stream")
+                return;
             if (context == null)
             {
                 throw new ArgumentNullException("context");
             }
 
-            if (context.Request.QueryString["origin"] == null)
+            if (context.Request.Query["origin"] == null)
             {
                 context.Response.StatusCode = 500;
                 context.Response.Write("Required query string parameter 'origin' is missing.");
@@ -74,9 +46,9 @@ namespace Hystrix.Dashboard
                 {
                     if (sourceResponse.StatusCode == HttpStatusCode.OK)
                     {
-                        context.Response.AppendHeader("Content-Type", "text/event-stream;charset=UTF-8");
-                        context.Response.AppendHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
-                        context.Response.AppendHeader("Pragma", "no-cache");
+                        context.Response.Headers.Add("Content-Type", new string[] { "text/event-stream;charset=UTF-8" });
+                        context.Response.Headers.Add("Cache-Control", new string[] { "no-cache, no-store, max-age=0, must-revalidate" });
+                        context.Response.Headers.Add("Pragma", new string[] { "no-cache" });
 
                         StreamSourceToClient(sourceResponse, context.Response);
                     }
@@ -94,7 +66,7 @@ namespace Hystrix.Dashboard
         /// </summary>
         /// <param name="sourceResponse">The source to read.</param>
         /// <param name="clientResponse">The client to write.</param>
-        private static void StreamSourceToClient(HttpWebResponse sourceResponse, HttpResponse clientResponse)
+        private static void StreamSourceToClient(HttpWebResponse sourceResponse, IOwinResponse clientResponse)
         {
             using (StreamReader inputStreamReader = new StreamReader(sourceResponse.GetResponseStream()))
             {
@@ -106,9 +78,9 @@ namespace Hystrix.Dashboard
                         try
                         {
                             clientResponse.Write(line + Environment.NewLine);
-                            clientResponse.Flush();
+
                         }
-                        catch (HttpException)
+                        catch (Exception ex)
                         {
                             Logger.Info("Client disconnected.");
                             break;
@@ -127,9 +99,9 @@ namespace Hystrix.Dashboard
         /// </summary>
         /// <param name="request">The current request.</param>
         /// <returns>The target URI.</returns>
-        private static Uri GetSourceUri(HttpRequest request)
+        private static Uri GetSourceUri(IOwinRequest request)
         {
-            string origin = request.Params["origin"].Trim();
+            string origin = request.Query["origin"].Trim();
 
             bool hasFirstParameter = false;
             StringBuilder url = new StringBuilder();
@@ -144,11 +116,11 @@ namespace Hystrix.Dashboard
                 hasFirstParameter = true;
             }
 
-            foreach (string key in request.QueryString.Keys)
+            foreach (var queryParam in request.Query)
             {
-                if (!key.Equals("origin", StringComparison.OrdinalIgnoreCase))
+                if (!queryParam.Key.Equals("origin", StringComparison.OrdinalIgnoreCase))
                 {
-                    string value = request.QueryString[key].Trim();
+                    string value = request.Query[queryParam.Key].Trim();
 
                     if (hasFirstParameter)
                     {
@@ -160,7 +132,7 @@ namespace Hystrix.Dashboard
                         hasFirstParameter = true;
                     }
 
-                    url.Append(key).Append("=").Append(value);
+                    url.Append(queryParam).Append("=").Append(value);
                 }
             }
 
