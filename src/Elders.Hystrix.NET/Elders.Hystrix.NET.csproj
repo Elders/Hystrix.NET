@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C001192A-C671-4263-A364-F5BCFE20452B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elders.Hystrix.NET</RootNamespace>
+    <AssemblyName>Elders.Hystrix.NET</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\..\CodeQuality\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
+    <Compile Include="CachedFuture.cs" />
+    <Compile Include="Collapser\CollapsedRequestFutureImpl.cs" />
+    <Compile Include="Collapser\ICollapsedRequest.cs" />
+    <Compile Include="Collapser\RealCollapserTimer.cs" />
+    <Compile Include="Collapser\RequestBatch.cs" />
+    <Compile Include="ConcurrentDictionaryExtensions.cs" />
+    <Compile Include="ExceptionFuture.cs" />
+    <Compile Include="Exceptions\FailureType.cs" />
+    <Compile Include="ExecutionIsolationStrategy.cs" />
+    <Compile Include="ExecutionResult.cs" />
+    <Compile Include="FakeFuture.cs" />
+    <Compile Include="HealthCounts.cs" />
+    <Compile Include="CircuitBreaker\HystrixCircuitBreakerImpl.cs" />
+    <Compile Include="Collapser\HystrixCollapser.cs" />
+    <Compile Include="Collapser\HystrixCollapserKeyFactory.cs" />
+    <Compile Include="Collapser\HystrixCollapserSetter.cs" />
+    <Compile Include="HystrixCommandPropertiesSetter.cs" />
+    <Compile Include="HystrixCommandSetter.cs" />
+    <Compile Include="HystrixKey.cs" />
+    <Compile Include="HystrixRequestCache.cs" />
+    <Compile Include="HystrixRequestLog.cs" />
+    <Compile Include="Collapser\ICollapserTimer.cs" />
+    <Compile Include="ICommandFuture.cs" />
+    <Compile Include="Collapser\IHystrixCollapserProperties.cs" />
+    <Compile Include="Collapser\HystrixCollapserPropertiesSetter.cs" />
+    <Compile Include="Collapser\HystrixCollapserScope.cs" />
+    <Compile Include="HystrixCommand.cs" />
+    <Compile Include="HystrixCommandMetrics.cs" />
+    <Compile Include="IHystrixCommandProperties.cs" />
+    <Compile Include="HystrixEventType.cs" />
+    <Compile Include="Properties\InternalsVisibility.cs" />
+    <Compile Include="Reference.cs" />
+    <Compile Include="ThreadPool\HystrixThreadPoolDefault.cs" />
+    <Compile Include="ThreadPool\HystrixThreadPoolMetrics.cs" />
+    <Compile Include="ThreadPool\IHystrixThreadPoolProperties.cs" />
+    <Compile Include="ThreadPool\HystrixThreadPoolPropertiesSetter.cs" />
+    <Compile Include="Collapser\IHystrixCollapserKey.cs" />
+    <Compile Include="HystrixCommandGroupKey.cs" />
+    <Compile Include="Exceptions\HystrixBadRequestException.cs" />
+    <Compile Include="Exceptions\HystrixRuntimeException.cs" />
+    <Compile Include="Hystrix.cs" />
+    <Compile Include="CircuitBreaker\HystrixCircuitBreakerFactory.cs" />
+    <Compile Include="ThreadPool\HystrixThreadPoolFactory.cs" />
+    <Compile Include="CircuitBreaker\IHystrixCircuitBreaker.cs" />
+    <Compile Include="HystrixCommandKey.cs" />
+    <Compile Include="IHystrixExecutable.cs" />
+    <Compile Include="ThreadPool\IHystrixThreadPool.cs" />
+    <Compile Include="ThreadPool\HystrixThreadPoolKey.cs" />
+    <Compile Include="CircuitBreaker\NoOpCircuitBreaker.cs" />
+    <Compile Include="RequestCacheKey.cs" />
+    <Compile Include="SemaphoreQueuedWrapperFuture.cs" />
+    <Compile Include="Strategy\Concurrency\DelegateRequestVariableLifecycle.cs" />
+    <Compile Include="Strategy\Concurrency\HystrixRequestVariableCacheKey.cs" />
+    <Compile Include="Strategy\Concurrency\IHystrixConcurrencyStrategy.cs" />
+    <Compile Include="Strategy\Concurrency\Default\HystrixConcurrencyStrategyDefault.cs" />
+    <Compile Include="Strategy\Concurrency\HystrixContextCallable.cs" />
+    <Compile Include="Strategy\Concurrency\HystrixContextRunnable.cs" />
+    <Compile Include="Strategy\Concurrency\HystrixRequestContext.cs" />
+    <Compile Include="Strategy\Concurrency\Default\HystrixRequestVariableDefault.cs" />
+    <Compile Include="Strategy\Concurrency\HystrixRequestVariableHolder.cs" />
+    <Compile Include="Strategy\Concurrency\IHystrixRequestVariable.cs" />
+    <Compile Include="Strategy\Concurrency\IHystrixRequestVariableLifecycle.cs" />
+    <Compile Include="Strategy\EventNotifier\IHystrixEventNotifier.cs" />
+    <Compile Include="Strategy\EventNotifier\Default\HystrixEventNotifierDefault.cs" />
+    <Compile Include="Strategy\ExecutionHook\IHystrixCommandExecutionHook.cs" />
+    <Compile Include="Strategy\ExecutionHook\Default\HystrixCommandExecutionHookDefault.cs" />
+    <Compile Include="Strategy\HystrixPlugins.cs" />
+    <Compile Include="Strategy\Metrics\HystrixDelegateMetricsPublisherCommand.cs" />
+    <Compile Include="Strategy\Metrics\HystrixDelegateMetricsPublisherThreadPool.cs" />
+    <Compile Include="Strategy\Metrics\IHystrixMetricsPublisher.cs" />
+    <Compile Include="Strategy\Metrics\Default\HystrixMetricsPublisherCommandDefault.cs" />
+    <Compile Include="Strategy\Metrics\Default\HystrixMetricsPublisherDefault.cs" />
+    <Compile Include="Strategy\HystrixMetricsPublisherFactory.cs" />
+    <Compile Include="Strategy\Metrics\Default\HystrixMetricsPublisherThreadPoolDefault.cs" />
+    <Compile Include="Strategy\Metrics\IHystrixMetricsPublisherCommand.cs" />
+    <Compile Include="Strategy\Metrics\IHystrixMetricsPublisherThreadPool.cs" />
+    <Compile Include="Strategy\Properties\Default\HystrixPropertiesCollapserDefault.cs" />
+    <Compile Include="Strategy\Properties\Default\HystrixPropertiesCommandDefault.cs" />
+    <Compile Include="Strategy\HystrixPropertiesFactory.cs" />
+    <Compile Include="Strategy\Properties\IHystrixPropertiesStrategy.cs" />
+    <Compile Include="Strategy\Properties\Default\HystrixPropertiesStrategyDefault.cs" />
+    <Compile Include="ThreadPool\HystrixThreadPoolPropertiesDefault.cs" />
+    <Compile Include="HystrixPropertyFactory.cs" />
+    <Compile Include="IHystrixProperty.cs" />
+    <Compile Include="TryableSemaphore.cs" />
+    <Compile Include="Util\ActualTime.cs" />
+    <Compile Include="Util\BucketCircularArray.cs" />
+    <Compile Include="Exceptions\ExceptionThreadingUtility.cs" />
+    <Compile Include="Util\HystrixRollingNumber.cs" />
+    <Compile Include="Util\HystrixRollingNumberEvent.cs" />
+    <Compile Include="Util\HystrixRollingNumberEventExtensions.cs" />
+    <Compile Include="Util\HystrixRollingPercentile.cs" />
+    <Compile Include="Util\HystrixTimer.cs" />
+    <Compile Include="Util\ITime.cs" />
+    <Compile Include="Util\ITimerListener.cs" />
+    <Compile Include="Util\LongAdder.cs" />
+    <Compile Include="Util\LongMaxUpdater.cs" />
+    <Compile Include="Util\TimerReference.cs" />
+    <Compile Include="ValueCacheKey.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Java.Util.Concurrent\Java.Util.Concurrent.csproj">
+      <Project>{928064f4-1233-44fd-8f8e-dc3bb4af536e}</Project>
+      <Name>Java.Util.Concurrent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\CodeQuality\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Statistics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
