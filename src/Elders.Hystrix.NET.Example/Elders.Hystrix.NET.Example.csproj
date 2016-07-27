@@ -7,8 +7,8 @@
     <ProjectGuid>{6DB5E141-DE85-4CEF-917D-E277EC878A66}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hystrix.Example</RootNamespace>
-    <AssemblyName>Hystrix.Example</AssemblyName>
+    <RootNamespace>Elders.Hystrix.NET.Example</RootNamespace>
+    <AssemblyName>Elders.Hystrix.NET.Example</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
